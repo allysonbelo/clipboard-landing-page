@@ -1,3 +1,64 @@
+@use "sass:math";
+
+// Colors
+$--color-strong-cyan: hsl(171, 66%, 44%);
+$--color-light-blue: hsl(233, 100%, 69%);
+$--color-dark-grayish-blue: hsl(210, 10%, 33%);
+$--color-grayish-blue: hsl(201, 11%, 66%);
+
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;600&display=swap');
+
+@mixin fontBai($-weight-400-600) {
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-weight: $-weight-400-600;
+}
+
+@mixin flx($property, $jty-cnt) {
+    display: flex;
+    #{$property}: $jty-cnt;
+}
+
+@mixin for-desktop-only {
+    @media screen and (min-width:900px) {
+        @content;
+    }
+}
+
+@mixin fontSize($size) {
+    font-size: calculaRem($size);
+}
+
+@function calculaRem($size) {
+    @return math.div($size, 16px) * 1rem;
+}
+
+$directions: top,
+right,
+bottom,
+left;
+$layout-margin-default: 40px;
+
+@each $direction in $directions {
+    %default-margin-#{$direction} {
+        margin-#{$direction}: $layout-margin-default;
+    }
+
+    %no-margin-#{$direction} {
+        margin-#{$direction}: 0;
+    }
+
+    %double-margin-#{$direction} {
+        margin-#{$direction}: $layout-margin-default * 2;
+    }
+
+    %ralf-margin-#{$direction} {
+        margin-#{$direction}: $layout-margin-default / 2;
+    }
+}
+
+.container {}
+
+
 .attribution {
     font-size: 11px;
     text-align: center;
