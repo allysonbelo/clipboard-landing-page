@@ -36,7 +36,7 @@ $directions: top,
 right,
 bottom,
 left;
-$layout-margin-default: 40px;
+$layout-margin-default: 16px;
 
 @each $direction in $directions {
     %default-margin-#{$direction} {
@@ -56,7 +56,94 @@ $layout-margin-default: 40px;
     }
 }
 
-.container {}
+.container {
+    background: white url(../images/bg-header-mobile.png) no-repeat top center / cover;
+    @include fontBai(400);
+
+    @include for-desktop-only() {
+        background: url(../images/bg-header-desktop.png)no-repeat top center / cover;
+    }
+
+    .main {
+        @extend %double-margin-left,
+        %double-margin-right,
+        %double-margin-top;
+
+        .intro {
+            &::before {
+                content: "";
+                display: block;
+                ;
+                background: url(../images/logo.svg) no-repeat center center / contain;
+                margin-top: 3rem;
+                margin-bottom: 4rem;
+                width: 100%;
+                height: 150px;
+            }
+
+            &__title {
+                @include fontSize(38px);
+                text-align: center;
+                color: $--color-dark-grayish-blue;
+                line-height: 44px;
+                @extend %double-margin-bottom;
+
+                @include for-desktop-only() {
+                    @include fontSize(44px);
+                }
+            }
+
+
+
+            &__text {
+                color: $--color-grayish-blue;
+                text-align: center;
+                @include fontSize(20px);
+                margin-bottom: 3rem;
+
+                @include for-desktop-only() {
+                    width: 50%;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+
+            .link-content {
+
+                width: 100%;
+
+                @include for-desktop-only(){
+                    @include flx(justify-content, center);
+                    align-items: center;
+                    max-width: 35%;
+                    margin: 0 auto;
+                }
+
+                &__link {
+                    align-items: center;
+                    background-color: $--color-strong-cyan;
+                    border-radius: 50px;
+                    color: white;
+                    font-weight: 600;
+                    @include fontSize(20px);
+                    display: flex;
+                    justify-content: center;
+                    height: 60px;
+                    width: 100%;
+                    box-shadow: 0 4px 1px rgb(19, 160, 139);
+                    cursor: pointer;
+                    @extend %double-margin-bottom;
+
+                    &:last-child {
+                        background-color: $--color-light-blue;
+                        box-shadow: 0 4px 1px rgb(69, 88, 235);
+                        @extend %default-margin-left;
+                    }
+                }
+            }
+        }
+    }
+}
 
 
 .attribution {
