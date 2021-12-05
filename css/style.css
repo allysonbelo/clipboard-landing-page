@@ -17,15 +17,18 @@
 
 .container .main .snippets__content .list .item__text,
 .container .main .clipboard__content .list .item__text,
-.container .main .workflow__content .list .item__text, .container .main .snippets__title,
+.container .main .workflow__content .list .item__text,
+.container .main .download__content .list .item__text, .container .main .snippets__title,
 .container .main .clipboard__title,
-.container .main .workflow__title, .container .main .intro .link-content__link, .container .main .intro__title {
+.container .main .workflow__title,
+.container .main .download__title, .container .main .link-content__link, .container .main .intro__title {
   margin-bottom: 32px;
 }
 
 .container .main .snippets__content .list .item__title,
 .container .main .clipboard__content .list .item__title,
-.container .main .workflow__content .list .item__title {
+.container .main .workflow__content .list .item__title,
+.container .main .download__content .list .item__title {
   margin-bottom: 8px;
 }
 
@@ -43,6 +46,10 @@
     background: url(../images/bg-header-desktop.png) no-repeat top center/cover;
   }
 }
+.container .main {
+  max-width: 1440px;
+  margin: 0 auto;
+}
 .container .main .intro {
   min-height: 100vh;
   display: flex;
@@ -55,8 +62,18 @@
   display: block;
   background: url(../images/logo.svg) no-repeat center center/contain;
   margin-bottom: 4rem;
+  margin-top: 4rem;
   width: 100%;
   height: 150px;
+  animation: rotate 1s linear 1000ms;
+}
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
 }
 .container .main .intro__title {
   font-size: 2.375rem;
@@ -82,19 +99,20 @@
     margin-right: auto;
   }
 }
-.container .main .intro .link-content {
-  width: 100%;
+.container .main .link-content {
+  width: 90%;
+  margin: 0 auto;
 }
 @media screen and (min-width: 900px) {
-  .container .main .intro .link-content {
+  .container .main .link-content {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 35%;
+    max-width: 50%;
     margin: 0 auto;
   }
 }
-.container .main .intro .link-content__link {
+.container .main .link-content__link {
   align-items: center;
   background-color: #26baa4;
   border-radius: 50px;
@@ -107,27 +125,33 @@
   width: 100%;
   box-shadow: 0 4px 1px #13a08b;
   cursor: pointer;
+  transition: transform 0.1s ease-in-out;
 }
-.container .main .intro .link-content__link:last-child {
+.container .main .link-content__link:last-child {
   background-color: #6173ff;
   box-shadow: 0 4px 1px #4558eb;
 }
 @media screen and (min-width: 900px) {
-  .container .main .intro .link-content__link:last-child {
+  .container .main .link-content__link:last-child {
     margin-left: 1rem;
   }
 }
-.container .main .intro .link-content__text {
+.container .main .link-content__link:hover {
+  transform: scale(1.05);
+}
+.container .main .link-content__text {
   color: #9fabb2;
 }
 .container .main .snippets,
 .container .main .clipboard,
-.container .main .workflow {
+.container .main .workflow,
+.container .main .download {
   min-height: 100vh;
 }
 .container .main .snippets__title,
 .container .main .clipboard__title,
-.container .main .workflow__title {
+.container .main .workflow__title,
+.container .main .download__title {
   text-align: center;
   font-size: 2.125rem;
   color: #4c545d;
@@ -135,14 +159,16 @@
 }
 .container .main .snippets__text,
 .container .main .clipboard__text,
-.container .main .workflow__text {
+.container .main .workflow__text,
+.container .main .download__text {
   text-align: center;
   color: #9fabb2;
 }
 @media screen and (min-width: 900px) {
   .container .main .snippets__text,
 .container .main .clipboard__text,
-.container .main .workflow__text {
+.container .main .workflow__text,
+.container .main .download__text {
     display: flex;
     justify-content: center;
     width: 55%;
@@ -153,7 +179,8 @@
 }
 .container .main .snippets__content,
 .container .main .clipboard__content,
-.container .main .workflow__content {
+.container .main .workflow__content,
+.container .main .download__content {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -162,13 +189,15 @@
 @media screen and (min-width: 900px) {
   .container .main .snippets__content,
 .container .main .clipboard__content,
-.container .main .workflow__content {
+.container .main .workflow__content,
+.container .main .download__content {
     flex-direction: row;
   }
 }
 .container .main .snippets__content::before,
 .container .main .clipboard__content::before,
-.container .main .workflow__content::before {
+.container .main .workflow__content::before,
+.container .main .download__content::before {
   background: url(../images/image-computer.png) no-repeat left center/contain;
   content: "";
   display: block;
@@ -181,7 +210,8 @@
 @media screen and (min-width: 900px) {
   .container .main .snippets__content::before,
 .container .main .clipboard__content::before,
-.container .main .workflow__content::before {
+.container .main .workflow__content::before,
+.container .main .download__content::before {
     width: 100%;
     height: 572px;
     margin-top: 6rem;
@@ -190,32 +220,37 @@
 }
 .container .main .snippets__content .list,
 .container .main .clipboard__content .list,
-.container .main .workflow__content .list {
+.container .main .workflow__content .list,
+.container .main .download__content .list {
   text-align: center;
 }
 @media screen and (min-width: 900px) {
   .container .main .snippets__content .list,
 .container .main .clipboard__content .list,
-.container .main .workflow__content .list {
+.container .main .workflow__content .list,
+.container .main .download__content .list {
     text-align: left;
   }
 }
 .container .main .snippets__content .list .item__title,
 .container .main .clipboard__content .list .item__title,
-.container .main .workflow__content .list .item__title {
+.container .main .workflow__content .list .item__title,
+.container .main .download__content .list .item__title {
   font-size: 1.5rem;
   color: #4c545d;
 }
 .container .main .snippets__content .list .item__text,
 .container .main .clipboard__content .list .item__text,
-.container .main .workflow__content .list .item__text {
+.container .main .workflow__content .list .item__text,
+.container .main .download__content .list .item__text {
   font-size: 1.25rem;
   color: #9fabb2;
 }
 @media screen and (min-width: 900px) {
   .container .main .snippets__content .list .item__text,
 .container .main .clipboard__content .list .item__text,
-.container .main .workflow__content .list .item__text {
+.container .main .workflow__content .list .item__text,
+.container .main .download__content .list .item__text {
     width: 70%;
   }
 }
@@ -318,12 +353,102 @@
     width: 60%;
   }
 }
-
-.attribution {
+.container .main .workflow__images {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 6rem;
+  row-gap: 5rem;
+  width: 90%;
+}
+@media screen and (min-width: 900px) {
+  .container .main .workflow__images {
+    flex-direction: row;
+    column-gap: 5rem;
+    margin-top: 10rem;
+  }
+}
+.container .main .download {
+  min-height: 0;
+  margin-top: 5rem;
+}
+@media screen and (min-width: 900px) {
+  .container .main .download {
+    margin-top: 5rem;
+  }
+}
+.container .main .download .link-content {
+  margin-top: 3rem;
+  margin-bottom: 10rem;
+}
+.container footer {
+  background-color: #eeeeee;
+}
+.container footer .footer {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 50vh;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.container footer .footer::before {
+  content: "";
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  width: 65px;
+  height: 65px;
+  background: url(../images/logo.svg) no-repeat center center/contain;
+}
+@media screen and (min-width: 900px) {
+  .container footer .footer {
+    flex-direction: row;
+    justify-content: space-evenly;
+    min-height: 120px;
+  }
+}
+.container footer .footer .faqs {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  row-gap: 2rem;
+  color: #9fabb2;
+  font-weight: 300;
+}
+@media screen and (min-width: 900px) {
+  .container footer .footer .faqs {
+    flex-direction: row;
+    column-gap: 2rem;
+    flex-wrap: wrap;
+    width: 30%;
+    justify-content: flex-start;
+  }
+}
+.container footer .footer .social {
+  display: flex;
+  justify-content: center;
+  font-size: 1.75rem;
+  color: #4c545d;
+}
+.container footer .footer .social :not(:last-child) {
+  margin-right: 2rem;
+}
+.container footer .footer .social i:hover {
+  color: #6173ff;
+  cursor: pointer;
+  transform: scale(1.05);
+}
+.container footer .attribution {
+  padding-bottom: 2rem;
   font-size: 11px;
   text-align: center;
 }
-.attribution a {
+.container footer .attribution a {
   color: #3e52a3;
 }
 

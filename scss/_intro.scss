@@ -1,0 +1,54 @@
+.intro {
+    min-height: 100vh;
+    @include flx(justify-content, center);
+    flex-direction: column;
+    align-items: center;
+
+    &::before {
+        content: "";
+        display: block;
+        ;
+        background: url(../images/logo.svg) no-repeat center center / contain;
+        margin-bottom: 4rem;
+        margin-top: 4rem;
+        width: 100%;
+        height: 150px;
+        
+        animation: rotate 1s linear 1000ms;
+
+        @keyframes rotate {
+            0%{
+                transform: rotateZ(0deg);
+            }
+            100%{
+                transform: rotateZ(360deg);
+            }
+        }
+    }
+
+    &__title {
+        @include fontSize(38px);
+        text-align: center;
+        color: $--color-dark-grayish-blue;
+        line-height: 44px;
+        @extend %double-margin-bottom;
+
+        @include for-desktop-only() {
+            @include fontSize(44px);
+        }
+    }
+
+    &__text {
+        color: $--color-grayish-blue;
+        text-align: center;
+        @include fontSize(20px);
+        margin-bottom: 3rem;
+
+        @include for-desktop-only() {
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+}
